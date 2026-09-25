@@ -35,11 +35,11 @@ function Leaves() {
       const [leavesResponse, balanceResponse] =
         await Promise.all([
           axios.get(
-            "http://localhost:8080/api/leaves/my",
+            "https://workdesk-production.up.railway.app/api/leaves/my",
             { headers }
           ),
           axios.get(
-            "http://localhost:8080/api/leaves/balance",
+            "https://workdesk-production.up.railway.app/api/leaves/balance",
             { headers }
           )
         ]);
@@ -74,7 +74,7 @@ function Leaves() {
 
     try {
       await axios.post(
-        "http://localhost:8080/api/leaves",
+        "https://workdesk-production.up.railway.app/api/leaves",
         formData,
         { headers }
       );

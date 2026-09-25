@@ -18,7 +18,7 @@ function AdminAttendance() {
       setError("");
 
       const response = await axios.get(
-        "http://localhost:8080/api/attendance",
+        "https://workdesk-production.up.railway.app/api/attendance",
         {
           headers: {
             Authorization: `Bearer ${token}`

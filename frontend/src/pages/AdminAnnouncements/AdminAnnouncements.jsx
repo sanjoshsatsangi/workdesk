@@ -26,7 +26,7 @@ function AdminAnnouncements() {
       setError("");
 
       const response = await axios.get(
-        "http://localhost:8080/api/announcements",
+        "https://workdesk-production.up.railway.app/api/announcements",
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -103,7 +103,7 @@ function AdminAnnouncements() {
 
       if (editingId) {
         await axios.put(
-          `http://localhost:8080/api/announcements/${editingId}`,
+          `https://workdesk-production.up.railway.app/api/announcements/${editingId}`,
           formData,
           {
             headers: {
@@ -113,7 +113,7 @@ function AdminAnnouncements() {
         );
       } else {
         await axios.post(
-          "http://localhost:8080/api/announcements",
+          "https://workdesk-production.up.railway.app/api/announcements",
           formData,
           {
             headers: {
@@ -146,7 +146,7 @@ function AdminAnnouncements() {
       setError("");
 
       await axios.delete(
-        `http://localhost:8080/api/announcements/${id}`,
+        `https://workdesk-production.up.railway.app/api/announcements/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`

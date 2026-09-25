@@ -18,7 +18,7 @@ function AdminTickets() {
       setError("");
 
       const response = await axios.get(
-        "http://localhost:8080/api/tickets",
+        "https://workdesk-production.up.railway.app/api/tickets",
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -46,7 +46,7 @@ function AdminTickets() {
   const updateStatus = async (id, status) => {
     try {
       await axios.put(
-        `http://localhost:8080/api/tickets/${id}/status`,
+        `https://workdesk-production.up.railway.app/api/tickets/${id}/status`,
         null,
         {
           params: {
@@ -78,7 +78,7 @@ function AdminTickets() {
 
     try {
       await axios.delete(
-        `http://localhost:8080/api/tickets/${id}`,
+        `https://workdesk-production.up.railway.app/api/tickets/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`

@@ -13,7 +13,7 @@ function AuthProvider({ children }) {
 
   const login = async (email, password, role) => {
     const response = await axios.post(
-      "http://localhost:8080/api/auth/login",
+      "https://workdesk-production.up.railway.app/api/auth/login",
       {
         email,
         password,
@@ -27,7 +27,7 @@ function AuthProvider({ children }) {
     setToken(newToken);
 
     const userResponse = await axios.get(
-      "http://localhost:8080/api/auth/me",
+      "https://workdesk-production.up.railway.app/api/auth/me",
       {
         headers: {
           Authorization: `Bearer ${newToken}`
@@ -55,7 +55,7 @@ function AuthProvider({ children }) {
 
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/auth/me",
+          "https://workdesk-production.up.railway.app/api/auth/me",
           {
             headers: {
               Authorization: `Bearer ${token}`

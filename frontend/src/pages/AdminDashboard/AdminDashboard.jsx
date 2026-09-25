@@ -30,19 +30,19 @@ function AdminDashboard() {
         announcementsResponse
       ] = await Promise.all([
         axios.get(
-          "http://localhost:8080/api/tickets",
+          "https://workdesk-production.up.railway.app/api/tickets",
           { headers }
         ),
         axios.get(
-          "http://localhost:8080/api/leaves",
+          "https://workdesk-production.up.railway.app/api/leaves",
           { headers }
         ),
         axios.get(
-          "http://localhost:8080/api/profile",
+          "https://workdesk-production.up.railway.app/api/profile",
           { headers }
         ),
         axios.get(
-          "http://localhost:8080/api/announcements",
+          "https://workdesk-production.up.railway.app/api/announcements",
           { headers }
         )
       ]);

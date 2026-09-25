@@ -31,7 +31,7 @@ function Register() {
 
     try {
       await axios.post(
-        "http://localhost:8080/api/auth/register",
+        "https://workdesk-production.up.railway.app/api/auth/register",
         formData
       );
 

@@ -30,7 +30,7 @@ function EmployeeDashboard() {
     const fetchTickets = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/tickets/my",
+          "https://workdesk-production.up.railway.app/api/tickets/my",
           { headers }
         );
 
@@ -45,7 +45,7 @@ function EmployeeDashboard() {
     const fetchLeaves = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/leaves/my",
+          "https://workdesk-production.up.railway.app/api/leaves/my",
           { headers }
         );
 
@@ -60,7 +60,7 @@ function EmployeeDashboard() {
     const fetchLeaveBalance = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/leaves/balance",
+          "https://workdesk-production.up.railway.app/api/leaves/balance",
           { headers }
         );
 
@@ -75,7 +75,7 @@ function EmployeeDashboard() {
     const fetchAttendance = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/attendance/today",
+          "https://workdesk-production.up.railway.app/api/attendance/today",
           { headers }
         );
 
@@ -90,7 +90,7 @@ function EmployeeDashboard() {
     const fetchAnnouncements = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/announcements",
+          "https://workdesk-production.up.railway.app/api/announcements",
           { headers }
         );
 

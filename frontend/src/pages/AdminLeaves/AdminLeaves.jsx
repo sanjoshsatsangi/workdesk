@@ -18,7 +18,7 @@ function AdminLeaves() {
       setError("");
 
       const response = await axios.get(
-        "http://localhost:8080/api/leaves",
+        "https://workdesk-production.up.railway.app/api/leaves",
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -46,7 +46,7 @@ function AdminLeaves() {
   const updateStatus = async (id, status) => {
     try {
       await axios.put(
-        `http://localhost:8080/api/leaves/${id}/status`,
+        `https://workdesk-production.up.railway.app/api/leaves/${id}/status`,
         null,
         {
           params: {

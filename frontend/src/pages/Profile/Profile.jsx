@@ -4,7 +4,7 @@ import axios from "axios";
 import { useAuth } from "../../context/useAuth";
 import "./Profile.css";
 
-const API_URL = "http://localhost:8080/api/profile";
+const API_URL = "https://workdesk-production.up.railway.app/api/profile";
 
 const emptyForm = {
   phone: "",

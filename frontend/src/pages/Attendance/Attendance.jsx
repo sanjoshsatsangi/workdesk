@@ -26,11 +26,11 @@ function Attendance() {
       const [todayResult, historyResult] =
         await Promise.allSettled([
           axios.get(
-            "http://localhost:8080/api/attendance/today",
+            "https://workdesk-production.up.railway.app/api/attendance/today",
             { headers }
           ),
           axios.get(
-            "http://localhost:8080/api/attendance/my",
+            "https://workdesk-production.up.railway.app/api/attendance/my",
             { headers }
           )
         ]);
@@ -68,7 +68,7 @@ function Attendance() {
 
     try {
       await axios.post(
-        "http://localhost:8080/api/attendance/check-in",
+        "https://workdesk-production.up.railway.app/api/attendance/check-in",
         {},
         { headers }
       );
@@ -90,7 +90,7 @@ function Attendance() {
 
     try {
       await axios.post(
-        "http://localhost:8080/api/attendance/check-out",
+        "https://workdesk-production.up.railway.app/api/attendance/check-out",
         {},
         { headers }
       );

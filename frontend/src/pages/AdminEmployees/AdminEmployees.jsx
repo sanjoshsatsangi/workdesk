@@ -18,7 +18,7 @@ function AdminEmployees() {
       setError("");
 
       const response = await axios.get(
-        "http://localhost:8080/api/users",
+        "https://workdesk-production.up.railway.app/api/users",
         {
           headers: {
             Authorization: `Bearer ${token}`

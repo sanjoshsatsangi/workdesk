@@ -19,7 +19,7 @@ function Announcements() {
   const fetchAnnouncements = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/announcements",
+        "https://workdesk-production.up.railway.app/api/announcements",
         { headers }
       );
 

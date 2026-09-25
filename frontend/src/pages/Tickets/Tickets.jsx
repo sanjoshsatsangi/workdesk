@@ -31,7 +31,7 @@ function Tickets() {
   const fetchTickets = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/tickets/my",
+        "https://workdesk-production.up.railway.app/api/tickets/my",
         { headers }
       );
 
@@ -64,7 +64,7 @@ function Tickets() {
 
     try {
       await axios.post(
-        "http://localhost:8080/api/tickets",
+        "https://workdesk-production.up.railway.app/api/tickets",
         formData,
         { headers }
       );
