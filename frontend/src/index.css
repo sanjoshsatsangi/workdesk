@@ -1,0 +1,116 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Global WorkDesk theme */
+
+:root {
+  --page-bg: #afbbd3;
+  --surface: #dfdfee;
+  --surface-muted: #f9fafb;
+  --border-color: #e5e7eb;
+  /* --text-primary: #111827; */
+  --text-secondary: #6b7280;
+  --accent-color: #6366f1;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--page-bg);
+  color: var(--text-primary);
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+}
+
+/* Common page backgrounds */
+.employee-dashboard,
+.admin-dashboard,
+.announcements-page,
+.tickets-page,
+.leaves-page,
+.attendance-page,
+.profile-page,
+/* .login-page, */
+.register-page {
+  min-height: 100vh;
+  background: var(--page-bg);
+  color: var(--text-primary);
+}
+
+/* Common content surfaces */
+.dashboard-section,
+.summary-card,
+.announcement-card,
+.ticket-card,
+.leave-card,
+.profile-card,
+.attendance-card,
+.form-card,
+.table-container {
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+}
+
+/* Headings and supporting text */
+h1,
+h2,
+h3,
+h4,
+strong {
+  color: var(--text-primary);
+}
+
+p,
+small,
+label {
+  color: var(--text-secondary);
+}
+
+/* Inputs */
+input,
+select,
+textarea {
+  background: var(--surface);
+  color: var(--text-primary);
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #c7d2fe;
+  border-color: var(--accent-color);
+}
+
+/* Tables */
+table {
+  background: var(--surface);
+  color: var(--text-primary);
+}
+
+th {
+  background: var(--surface-muted);
+}
+
+td,
+th {
+  border-color: var(--border-color);
+}
