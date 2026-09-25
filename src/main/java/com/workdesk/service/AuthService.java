@@ -4,8 +4,10 @@ import com.workdesk.entity.Role;
 import com.workdesk.entity.User;
 import com.workdesk.repository.UserRepository;
 import com.workdesk.security.JwtService;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class AuthService {
@@ -51,23 +53,25 @@ public class AuthService {
             Role expectedRole) {
 
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() ->
-                        new RuntimeException("Invalid email or password"));
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.UNAUTHORIZED,
+                        "Invalid email or password"
+                ));
 
-        if (!passwordEncoder.matches(
-                password,
-                user.getPassword())) {
-
-            throw new RuntimeException(
-                    "Invalid email or password");
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+            throw new ResponseStatusException(
+                    HttpStatus.UNAUTHORIZED,
+                    "Invalid email or password"
+            );
         }
 
         if (user.getRole() != expectedRole) {
-
-            throw new RuntimeException(
+            throw new ResponseStatusException(
+                    HttpStatus.UNAUTHORIZED,
                     expectedRole == Role.ADMIN
                             ? "Please use Employee Login."
-                            : "Please use Admin Login.");
+                            : "Please use Admin Login."
+            );
         }
 
         return jwtService.generateToken(
