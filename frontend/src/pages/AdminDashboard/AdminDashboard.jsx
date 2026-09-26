@@ -38,7 +38,7 @@ function AdminDashboard() {
           { headers }
         ),
         axios.get(
-          "https://workdesk-production.up.railway.app/api/profile",
+          "https://workdesk-production.up.railway.app/api/users",
           { headers }
         ),
         axios.get(
@@ -49,7 +49,12 @@ function AdminDashboard() {
 
       setTickets(ticketsResponse.data);
       setLeaves(leavesResponse.data);
-      setEmployees(employeesResponse.data);
+
+      const employeeUsers = employeesResponse.data.filter(
+        (employee) => employee.role === "EMPLOYEE"
+      );
+
+      setEmployees(employeeUsers);
       setAnnouncements(announcementsResponse.data);
     } catch (error) {
       console.error(
@@ -98,16 +103,13 @@ function AdminDashboard() {
 
   return (
     <div className="admin-dashboard">
-
       <aside className="admin-sidebar">
-
         <div className="admin-sidebar-brand">
           <h2>WorkDesk</h2>
           <span>Admin Portal</span>
         </div>
 
         <nav className="admin-sidebar-nav">
-
           <button
             className="admin-sidebar-link active"
             onClick={() => navigate("/admin")}
@@ -149,7 +151,6 @@ function AdminDashboard() {
           >
             Announcements
           </button>
-
         </nav>
 
         <button
@@ -158,13 +159,10 @@ function AdminDashboard() {
         >
           Logout
         </button>
-
       </aside>
 
       <main className="admin-main">
-
         <header className="admin-header">
-
           <div>
             <h1>Admin Dashboard</h1>
 
@@ -174,7 +172,6 @@ function AdminDashboard() {
           </div>
 
           <div className="admin-info">
-
             <div className="admin-avatar">
               {user?.name?.charAt(0).toUpperCase() || "A"}
             </div>
@@ -188,15 +185,11 @@ function AdminDashboard() {
                 {user?.role || "ADMIN"}
               </span>
             </div>
-
           </div>
-
         </header>
 
         <section className="admin-content">
-
           <div className="admin-summary-grid">
-
             <div className="admin-summary-card">
               <span>Employees</span>
 
@@ -236,13 +229,10 @@ function AdminDashboard() {
 
               <p>Published updates</p>
             </div>
-
           </div>
 
           <section className="admin-section">
-
             <div className="admin-section-header">
-
               <div>
                 <h2>Quick Overview</h2>
 
@@ -250,13 +240,10 @@ function AdminDashboard() {
                   Current activity across the employee portal.
                 </p>
               </div>
-
             </div>
 
             <div className="admin-overview-grid">
-
               <div className="admin-overview-card">
-
                 <span className="overview-label">
                   Total Tickets
                 </span>
@@ -268,11 +255,9 @@ function AdminDashboard() {
                 <small>
                   {resolvedTickets} resolved
                 </small>
-
               </div>
 
               <div className="admin-overview-card">
-
                 <span className="overview-label">
                   Total Leave Requests
                 </span>
@@ -284,17 +269,12 @@ function AdminDashboard() {
                 <small>
                   {approvedLeaves} approved
                 </small>
-
               </div>
-
             </div>
-
           </section>
 
           <section className="admin-section">
-
             <div className="admin-section-header">
-
               <div>
                 <h2>Quick Actions</h2>
 
@@ -302,11 +282,9 @@ function AdminDashboard() {
                   Access frequently used administration features.
                 </p>
               </div>
-
             </div>
 
             <div className="admin-actions-grid">
-
               <button
                 className="admin-action-card"
                 onClick={() => navigate("/admin/tickets")}
@@ -374,15 +352,10 @@ function AdminDashboard() {
                   Publish company announcements
                 </small>
               </button>
-
             </div>
-
           </section>
-
         </section>
-
       </main>
-
     </div>
   );
 }
