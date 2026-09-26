@@ -41,11 +41,15 @@ function AdminLogin() {
 
       navigate("/admin");
     } catch (error) {
-      setError(
-        error.response?.data?.message ||
-        error.message ||
-        "Invalid admin email or password."
-      );
+      const message = error.response?.data?.message;
+
+      if (message) {
+        setError(message);
+      } else if (error.response?.status === 401) {
+        setError("Invalid admin email or password.");
+      } else {
+        setError("Unable to log in. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
@@ -53,11 +57,8 @@ function AdminLogin() {
 
   return (
     <div className="admin-login-page">
-
       <div className="admin-login-card">
-
         <div className="admin-login-header">
-
           <h1>WorkDesk</h1>
 
           <span className="admin-login-badge">
@@ -67,13 +68,10 @@ function AdminLogin() {
           <p>
             Sign in to manage the employee support portal.
           </p>
-
         </div>
 
         <form onSubmit={handleSubmit}>
-
           <div className="admin-login-form-group">
-
             <label>Email</label>
 
             <input
@@ -84,11 +82,9 @@ function AdminLogin() {
               onChange={handleChange}
               required
             />
-
           </div>
 
           <div className="admin-login-form-group">
-
             <label>Password</label>
 
             <input
@@ -99,7 +95,6 @@ function AdminLogin() {
               onChange={handleChange}
               required
             />
-
           </div>
 
           {error && (
@@ -113,15 +108,11 @@ function AdminLogin() {
             className="admin-login-button"
             disabled={loading}
           >
-            {loading
-              ? "Signing in..."
-              : "SIGN IN"}
+            {loading ? "Signing in..." : "SIGN IN"}
           </button>
-
         </form>
 
         <div className="admin-login-footer">
-
           <p>
             Are you an employee?
           </p>
@@ -132,11 +123,8 @@ function AdminLogin() {
           >
             Employee Login
           </button>
-
         </div>
-
       </div>
-
     </div>
   );
 }

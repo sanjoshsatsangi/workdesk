@@ -40,12 +40,16 @@ function Login() {
       } else {
         navigate("/dashboard");
       }
-
     } catch (error) {
-      setError(
-        error.response?.data?.message ||
-        "Invalid email or password"
-      );
+      const message = error.response?.data?.message;
+
+      if (message) {
+        setError(message);
+      } else if (error.response?.status === 401) {
+        setError("Invalid email or password.");
+      } else {
+        setError("Unable to log in. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
@@ -54,17 +58,17 @@ function Login() {
   return (
     <div className="login-page">
       <div className="login-card">
-
         <div className="login-header">
           <h1>WorkDesk</h1>
+
           <span className="employee-login-badge">
             EMPLOYEE PORTAL
           </span>
+
           <p>Employee Support Portal</p>
         </div>
 
         <form onSubmit={handleSubmit}>
-
           <div className="form-group">
             <label>Email</label>
 
@@ -104,7 +108,6 @@ function Login() {
           >
             {loading ? "Signing in..." : "SIGN IN"}
           </button>
-
         </form>
 
         <div className="login-footer">
@@ -130,7 +133,6 @@ function Login() {
             </button>
           </div>
         </div>
-
       </div>
     </div>
   );
